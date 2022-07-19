@@ -5,9 +5,7 @@
 		"@abhijithvijayan/eslint-config/react"
 	],
 	"parserOptions": {
-		"project": [
-			"./tsconfig.json"
-		],
+		"project": ["./tsconfig.json"],
 		"sourceType": "module"
 	},
 	"rules": {
@@ -15,13 +13,19 @@
 		"no-extend-native": "off",
 		"react/jsx-props-no-spreading": "off",
 		"jsx-a11y/label-has-associated-control": "off",
+		"@typescript-eslint/no-non-null-assertion": "off",
 		"class-methods-use-this": "off",
 		"max-classes-per-file": "off",
 		"node/no-missing-import": "off",
 		"node/no-unpublished-import": "off",
-		"node/no-unsupported-features/es-syntax": ["error", {
-			"ignores": ["modules"]
-		}]
+		"jsx-a11y/click-events-have-key-events": "off",
+		"jsx-a11y/no-noninteractive-element-to-interactive-role": "off",
+		"node/no-unsupported-features/es-syntax": [
+			"error",
+			{
+				"ignores": ["modules"]
+			}
+		]
 	},
 	"env": {
 		"webextensions": true
