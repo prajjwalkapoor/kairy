@@ -25,7 +25,9 @@
 			{
 				"ignores": ["modules"]
 			}
-		]
+		],
+		"no-undef": "off",
+		"@typescript-eslint/no-explicit-any": "off"
 	},
 	"env": {
 		"webextensions": true
