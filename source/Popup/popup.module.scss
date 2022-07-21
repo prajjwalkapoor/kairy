@@ -1,6 +1,16 @@
-@import "../styles/fonts";
-@import "../styles/reset";
-@import "../styles/variables";
+@import '../styles/fonts';
+@import '../styles/reset';
+@import '../styles/variables';
+html {
+	height: max-content;
+}
+body {
+	min-height: max-content;
+}
+.container {
+	background-color: $primary-background;
+}
 .h1 {
-  font-size: 3rem;
+	font-size: 3rem;
+	color: $primary-heading;
 }
