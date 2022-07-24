@@ -27,7 +27,8 @@
 			}
 		],
 		"no-undef": "off",
-		"@typescript-eslint/no-explicit-any": "off"
+		"@typescript-eslint/no-explicit-any": "off",
+		"react/no-array-index-key": "off"
 	},
 	"env": {
 		"webextensions": true

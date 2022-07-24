@@ -1,19 +1,58 @@
-[theme="light"] {
-  --primary-heading: #000;
-  --primary-background: #fff;
+[theme='light'] {
+	--primary-background: #f5f9ff;
+	--primary-heading: #121212;
+	--primary-text: #575758;
+	--primary-button-background: #4b77ab;
+	--primary-button-text: #f5f9ff;
+	--primary-button-background-2: #ffffff;
+	--primary-button-text-2: #4b77ab;
+	--primary-border: #a7b1b9;
+	--secondary-button-background: #ffffff;
+	--secondary-button-text: #4b77ab;
+	--cancel-button-background: #cd6858;
+	--cancel-button-text: #f5f9ff;
+	--input-background: #ffffff;
+	--disabled-background: #ced5dc;
+	--disabled-text: #ffffff;
 }
-[theme="dark"] {
-  --primary-heading: #fff;
-  --primary-background: #000;
+[theme='dark'] {
+	--primary-background: #09131e;
+	--primary-heading: #ffffff;
+	--primary-text: #f5f9ff;
+	--primary-button-background: #afd2f5;
+	--primary-button-text: #121212;
+	--primary-button-background-2: #afd2f5;
+	--primary-button-text-2: #121212;
+	--primary-border: rgba(#a7b1b9, 0.37);
+	--secondary-button-background: #16222f;
+	--secondary-button-text: #afd2f5;
+	--cancel-button-background: #16222f;
+	--cancel-button-text: #afd2f5;
+	--input-background: #151f29;
+	--disabled-background: #1f2832;
+	--disabled-text: #a5a9ad;
 }
 
 // color variables
 
 $primary-heading: var(--primary-heading);
 $primary-background: var(--primary-background);
+$primary-text: var(--primary-text);
+$primary-button-background: var(--primary-button-background);
+$primary-button-text: var(--primary-button-text);
+$primary-button-background-2: var(--primary-button-background-2);
+$primary-button-text-2: var(--primary-button-text-2);
+$primary-border: var(--primary-border);
+$secondary-button-background: var(--secondary-button-background);
+$secondary-button-text: var(--secondary-button-text);
+$cancel-button-background: var(--cancel-button-background);
+$cancel-button-text: var(--cancel-button-text);
+$input-background: var(--input-background);
+$disabled-background: var(--disabled-background);
+$disabled-text: var(--disabled-text);
 
 // fonts
-$nunito: "Nunito", sans-serif;
+$nunito: 'Nunito', sans-serif;
 
 // font weights
 $thin: 100;
@@ -28,5 +67,5 @@ $exblack: 900;
 
 // other variables
 .d-none {
-  display: none !important;
+	display: none !important;
 }

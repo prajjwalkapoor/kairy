@@ -1,0 +1,30 @@
+@import '../../../styles/fonts';
+@import '../../../styles/variables';
+@import '../../../styles/reset';
+
+.container {
+	margin: 1rem 0;
+	width: 100%;
+	display: flex;
+	background-color: $disabled-background;
+	justify-content: space-evenly;
+	border-radius: 4px;
+	button {
+		height: 2rem;
+		margin: 0.5rem;
+		padding: 2px 5px;
+		width: 50%;
+		border-radius: 4px;
+		cursor: pointer;
+	}
+	.popupTabActive {
+		background-color: $primary-button-background-2;
+		color: $primary-button-text-2;
+		font-size: 14px;
+		font-weight: 500;
+	}
+	.popupTabInactive {
+		background-color: $disabled-background;
+		color: $disabled-text;
+	}
+}

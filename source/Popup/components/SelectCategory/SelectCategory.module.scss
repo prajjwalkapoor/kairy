@@ -1,0 +1,72 @@
+@import '../../../styles/fonts';
+@import '../../../styles/variables';
+@import '../../../styles/reset';
+
+.container {
+	.newCategory {
+		.h2 {
+			font-size: 1rem;
+			margin-top: 1rem;
+			color: $primary-heading;
+		}
+		.newCategoryInput {
+			width: 100%;
+			font-size: 1rem;
+			height: 1.5rem;
+			color: $primary-text;
+			background-color: $input-background;
+			height: 2.5rem;
+			padding: 0.7rem;
+			border: 2px solid $primary-border;
+
+			border-radius: 4px;
+			&:focus {
+				border: 2px solid $primary-border;
+			}
+		}
+		.error {
+			color: $primary-text;
+			font-size: 0.8rem;
+			margin-top: 0.5rem;
+		}
+	}
+	.selectContainer {
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		.h2 {
+			width: 30%;
+			font-size: 1rem;
+			margin-top: 1rem;
+			color: $primary-heading;
+		}
+		.selectWrapper {
+			width: 70%;
+			position: relative;
+			.select {
+				font-size: 1rem;
+				width: 100%;
+
+				color: $primary-text;
+				background-color: $input-background;
+				padding: 0.7rem;
+				border-radius: 4px;
+				border: 1px solid $primary-border;
+				padding-right: 1rem;
+				-webkit-appearance: none !important;
+				-moz-appearance: none !important;
+				appearance: none !important;
+			}
+			&::after {
+				content: '⌄';
+				position: absolute;
+				right: 0;
+				top: 50%;
+				transform: translateY(-70%);
+				margin-right: 1rem;
+				font-size: 1.5rem;
+				color: $primary-text;
+			}
+		}
+	}
+}

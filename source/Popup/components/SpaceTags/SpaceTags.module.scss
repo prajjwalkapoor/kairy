@@ -1,0 +1,70 @@
+@import '../../../styles/fonts';
+@import '../../../styles/variables';
+@import '../../../styles/reset';
+
+.container {
+	width: 100%;
+	margin-top: 1rem;
+	.h2 {
+		font-size: 1rem;
+		margin-top: 1rem;
+		color: $primary-heading;
+	}
+
+	.input {
+		width: 100%;
+		font-size: 1rem;
+		height: 1.5rem;
+		color: $primary-text;
+		background-color: $input-background;
+		height: 2.5rem;
+		padding: 0.7rem;
+		border: 1px solid $primary-border;
+		border-radius: 4px;
+		&:focus {
+			border: 2px solid $primary-border;
+		}
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		padding: 0;
+		margin: 8px 0 0;
+	}
+
+	.tag {
+		width: auto;
+		height: 32px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: $secondary-button-text;
+		padding: 0 8px;
+		font-size: 14px;
+		list-style: none;
+		border-radius: 6px;
+		border: 1px solid $primary-border;
+		margin: 0.5rem 0.5rem 0.5rem 0;
+		background: $secondary-button-background;
+	}
+
+	.tagTitle {
+		margin-top: 3px;
+		font-size: 1rem;
+	}
+
+	.tagCloseIcon {
+		display: block;
+		width: 16px;
+		height: 16px;
+		line-height: 16px;
+		text-align: center;
+		font-size: 14px;
+		margin-left: 8px;
+		color: $cancel-button-background;
+		border-radius: 5%;
+		background: $cancel-button-text;
+		cursor: pointer;
+	}
+}

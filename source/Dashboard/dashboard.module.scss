@@ -1,12 +1,16 @@
-@import "../styles/fonts";
-@import "../styles/reset";
-@import "../styles/variables";
+@import '../styles/fonts';
+@import '../styles/reset';
+@import '../styles/variables';
 .h1 {
-  font-size: 5rem;
-  color: $primary-heading;
+	font-size: 5rem;
+	color: $primary-heading;
 }
 .container {
-  width: 100vw;
-  height: 100vh;
-  background-color: $primary-background;
+	width: 100vw;
+	height: 100vh;
+	background-color: $primary-background;
+}
+.p {
+	color: $primary-text;
+	font-size: 1rem;
 }
