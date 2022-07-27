@@ -15,14 +15,9 @@ const SpaceTags: React.FC = () => {
     const element = event.target as HTMLInputElement;
     if (element.value !== '') {
       const string = element.value;
-      if (string.includes(',')) {
-        const tagsArr: string[] = string.split(',');
-        setTags([...tags, ...tagsArr]);
-        element.value = '';
-      } else {
-        setTags([...tags, element.value]);
-        element.value = '';
-      }
+      const stringToPush = string.slice(0, string.indexOf(','));
+      setTags([...tags, stringToPush]);
+      element.value = '';
     }
   };
   return (
@@ -31,8 +26,11 @@ const SpaceTags: React.FC = () => {
       <input
         className={styles.input}
         type='text'
+        placeholder='Add comma separated tags'
         onKeyUp={(event): void =>
-          event.key === 'Enter' ? addTagData(event) : undefined
+          event.key === 'Enter' || event.which === 188
+            ? addTagData(event)
+            : undefined
         }
       />
       <ul className={styles.tags}>

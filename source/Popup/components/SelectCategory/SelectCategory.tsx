@@ -6,7 +6,7 @@ import styles from './SelectCategory.module.scss';
 
 const SelectCategory: React.FC = () => {
   const {state, dispatch} = useContext(ContextProvider);
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState('all');
   const [newCategory, setNewCategory] = useState('');
   const [categoryList, setCategoryList] = useState<string[]>([]);
 
@@ -56,7 +56,9 @@ const SelectCategory: React.FC = () => {
           <h2 className={styles.h2}>New category name</h2>
           <input
             className={styles.newCategoryInput}
-            onChange={(e): void => setNewCategory(e?.target.value)}
+            onChange={(e): void => {
+              setNewCategory(e?.target.value);
+            }}
             type='text'
           />
           {categoryList.includes(newCategory) && (

@@ -13,6 +13,10 @@
 		border-radius: 4px;
 		font-weight: 600;
 		cursor: pointer;
+		&:disabled {
+			cursor: not-allowed;
+			opacity: 0.5;
+		}
 	}
 	.saveButton {
 		background-color: $primary-button-background;
