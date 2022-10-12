@@ -1,0 +1,138 @@
+@import '../../../styles/fonts';
+@import '../../../styles/reset';
+@import '../../../styles/variables';
+.shortcutCard {
+	width: 164px;
+	height: 128px;
+	background-color: $card-background;
+	box-shadow: 0px 4px 8px 0px rgba(92, 92, 92, 0.2);
+	position: relative;
+	border-radius: 8px;
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+
+	&:hover {
+		a {
+			font-size: 14px;
+		}
+	}
+
+	.cardDesc {
+		background-color: $card-background;
+	}
+}
+
+.b1 {
+	background: linear-gradient(135.11deg, #f4d03f -1.85%, #16a085 90.02%);
+}
+
+.b2 {
+	background-color: #4158d0;
+	background-image: linear-gradient(
+		43deg,
+		#4158d0 0%,
+		#c850c0 46%,
+		#ffcc70 100%
+	);
+}
+
+.b3 {
+	background: linear-gradient(
+		68.6deg,
+		rgb(252, 165, 241) 1.8%,
+		rgb(181, 255, 255) 100.5%
+	);
+}
+
+.b4 {
+	background: linear-gradient(286.01deg, #9face6 10.3%, #74ebd5 90.03%);
+}
+
+.cardMenuIcon {
+	position: absolute;
+	top: 8px;
+	right: 0px;
+	width: 20px;
+	height: 20px;
+	text-align: center;
+	transition: all 0.3s;
+
+	&:hover {
+		padding: 2px 0px;
+		cursor: pointer;
+		transform: translateY(2 px);
+	}
+}
+
+.cardMenuDropdown {
+	position: absolute;
+	background-color: $primary-background;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	top: -30px;
+	right: 2px;
+	width: 5rem;
+	padding: 0.5rem;
+	border-radius: 8px;
+	transition: all 0.2s ease-in-out;
+
+	p {
+		padding: 2px 0;
+		cursor: pointer;
+	}
+}
+
+.cardDesc {
+	padding: 0.8rem;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	border-radius: 0 0 6px 6px;
+	max-width: 164px;
+	padding: 10px;
+
+	h1 {
+		font-size: 20px;
+		display: inline-block;
+		margin: 0.5rem 0 0.2rem 0;
+	}
+
+	.logoContainer {
+		width: 20px;
+		height: 20px;
+		position: absolute;
+		top: -6px;
+		left: 16px;
+		height: max-content;
+		display: inline;
+		// background-image: url("../assets/shortcut-logo-bg.svg");
+	}
+
+	.hide {
+		visibility: hidden;
+		opacity: 0;
+	}
+
+	.visible {
+		visibility: visible;
+		opacity: 1;
+	}
+
+	img {
+		filter: none !important;
+		border-radius: 50%;
+	}
+
+	a {
+		all: unset;
+		cursor: pointer;
+		font-size: 0px;
+		padding: 0;
+		margin: 0;
+		color: $primary-text;
+		transition: all 0.2s ease-in-out;
+
+		&:hover {
+			color: $primary-button-background;
+		}
+	}
+}

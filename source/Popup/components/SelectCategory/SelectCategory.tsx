@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { browser } from 'webextension-polyfill-ts'
 import { ContextProvider } from '../../context/context'
-import { Shortcut, Space } from '../../reducers/types'
 import styles from './SelectCategory.module.scss'
 
 const SelectCategory: React.FC = () => {
@@ -12,9 +11,9 @@ const SelectCategory: React.FC = () => {
 	useEffect(() => {
 		browser.storage.local.get().then((res) => {
 			if (state.activeTab === 'shortcut') {
-				setCategoryList(res.shortcutList.map((item: Shortcut) => item.category))
+				res.shortcutCategoryList && setCategoryList(res.shortcutCategoryList)
 			} else if (state.activeTab === 'space') {
-				setCategoryList(res.spaceList.map((item: Space) => item.category))
+				res.spaceCategoryList && setCategoryList(res.spaceCategoryList)
 			}
 		})
 	}, [state.activeTab])

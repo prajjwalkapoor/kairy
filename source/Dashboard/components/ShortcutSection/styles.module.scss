@@ -1,0 +1,16 @@
+.shortcutContainer {
+	margin-top: 7rem;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 34px;
+	position: relative;
+	transition: all 0.4s ease-in-out;
+}
+
+.fullGrid {
+	width: 100%;
+}
+
+.halfGrid {
+	width: 80%;
+}

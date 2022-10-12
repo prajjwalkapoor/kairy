@@ -10,14 +10,15 @@ const PopupButtons: React.FC = () => {
 	const { state } = useContext(ContextProvider)
 	const [shortcutList, setshortcutList] = useState([])
 	const [spaceList, setSpaceList] = useState([])
+	const [shortcutCategoryList, setShortcutCategoryList] = useState<string[]>([])
 	const [, setCategoryList] = useState<string[]>()
 	useEffect(() => {
 		browser.storage.local.get().then((res) => {
-			setshortcutList(res.shortcutList)
-			setSpaceList(res.spaceList)
+			res.shortcutList && setshortcutList(res.shortcutList)
+			res.spaceList && setSpaceList(res.spaceList)
+			res.shortcutCategoryList && setShortcutCategoryList(res.shortcutCategoryList)
 		})
 	}, [])
-	console.log(state.isSubmitDisabled)
 	useEffect(() => {
 		browser.storage.local.get().then((res) => {
 			if (state.activeTab === 'shortcut') {
@@ -36,8 +37,20 @@ const PopupButtons: React.FC = () => {
 				category: state.category,
 				icon: getIcon(state.url),
 			}
+			browser.storage.local.get().then((res) => {
+				if (res.shortcutList.includes(!shortcut.category)) {
+					browser.storage.local.set({
+						shortcutList: [...res.shortcutList, shortcut.category],
+					})
+				}
+			})
 			browser.storage.local.set({
 				shortcutList: [...shortcutList, shortcut],
+				shortcutCategoryList:
+					shortcut.category !== 'all' &&
+					!shortcutCategoryList.includes(shortcut.category)
+						? [...shortcutCategoryList, shortcut.category]
+						: shortcutCategoryList,
 			})
 		} else if (state.activeTab === 'space') {
 			const space = {
@@ -65,7 +78,10 @@ const PopupButtons: React.FC = () => {
 				className={classnames(styles.button, styles.cancelButton)}
 				type='button'
 				onClick={(): void => {
-					window.close()
+					// window.close()
+					browser.storage.local.get().then((res) => {
+						console.log(res, 'res')
+					})
 					// browser.storage.local.clear()
 				}}
 			>
