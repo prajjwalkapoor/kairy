@@ -9,7 +9,7 @@
 	--primary-border: #a7b1b9;
 	--secondary-button-background: #ffffff;
 	--primary-button-background-3: #ffffff;
-
+	--primary-lite-text: #949393;
 	--secondary-button-text: #4b77ab;
 	--cancel-button-background: #cd6858;
 	--cancel-button-text: #f5f9ff;
@@ -26,7 +26,7 @@
 	--primary-button-text: #121212;
 	--primary-button-background-2: #afd2f5;
 	--primary-button-background-3: #09131e;
-
+	--primary-lite-text: #a7b1b9;
 	--primary-button-text-2: #121212;
 	--primary-border: rgba(#a7b1b9, 0.37);
 	--secondary-button-background: #16222f;
@@ -49,6 +49,7 @@ $primary-button-text: var(--primary-button-text);
 $primary-button-background-2: var(--primary-button-background-2);
 $primary-button-background-3: var(--primary-button-background-3);
 $primary-button-text-2: var(--primary-button-text-2);
+$primary-lite-text: var(--primary-lite-text);
 $primary-border: var(--primary-border);
 $secondary-button-background: var(--secondary-button-background);
 $secondary-button-text: var(--secondary-button-text);

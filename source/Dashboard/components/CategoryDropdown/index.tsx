@@ -34,7 +34,7 @@ const CategoryDropdown: React.FC = () => {
 					setIsCategoryDropdownOpen(!isCategoryDropdownOpen)
 				}}
 			>
-				<p>
+				<p className={styles.selectedCatMenu}>
 					{!state.activeShortcutCategory
 						? 'All Categories'
 						: state.activeShortcutCategory}
