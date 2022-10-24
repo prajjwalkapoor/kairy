@@ -3,8 +3,8 @@
 @import '../../../styles/variables';
 
 .searchContainer {
-	display: inline-block;
 	position: relative;
+
 	.searchInput {
 		width: 100%;
 		height: 52px;
@@ -27,5 +27,60 @@
 
 		left: 16px;
 		top: 14px;
+	}
+	.searchSource {
+		position: absolute;
+		display: flex;
+		align-items: center;
+		top: 12px;
+		right: 16px;
+		font-size: 1rem;
+		color: $primary-lite-text;
+		border-left: 0.5px solid $primary-lite-text;
+		padding-left: 1rem;
+		cursor: pointer;
+		.dropIcon {
+			margin-left: 4px;
+			transition: all 0.3s;
+			fill: $primary-lite-text;
+		}
+
+		.rotate0 {
+			transform: rotate(0deg);
+		}
+
+		.rotate180 {
+			transform: rotate(180deg);
+		}
+	}
+	.searchSourceDropdown {
+		display: inline-block;
+		padding: 0.5rem 0.8rem;
+		background-color: $primary-button-background-3;
+		border-radius: 8px;
+		position: absolute;
+		box-shadow: 0px 4px 8px 0px rgba(92, 92, 92, 0.2);
+		top: 50px;
+		right: 16px;
+		z-index: 1;
+		p {
+			margin: 0.8rem 0;
+			font-size: 1rem;
+			color: $primary-text;
+			cursor: pointer;
+			&:hover {
+				color: $primary-button-background;
+			}
+		}
+	}
+	.searchDropdown {
+		display: inline-block;
+		padding: 0.5rem 0.8rem;
+		top: 54px;
+		left: 0;
+		position: absolute;
+		width: 100%;
+		background-color: $primary-button-background-3;
+		z-index: 1;
 	}
 }

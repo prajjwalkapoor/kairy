@@ -13,13 +13,14 @@ const Dashboard: React.FC = () => {
 	return (
 		<div className={styles.dashboard}>
 			<header>
-				<CategoryDropdown />
 				<SearchBar />
+				<div className={styles.headerIcons}></div>
 				<button className={styles.themebtn} onClick={clickHandler}>
 					Change Theme
 				</button>
 			</header>
 			<main>
+				<CategoryDropdown />
 				<ShortcutSection />
 			</main>
 		</div>

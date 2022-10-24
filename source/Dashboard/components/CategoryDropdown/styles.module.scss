@@ -4,14 +4,13 @@
 
 .categoryDropdown {
 	position: relative;
-	width: auto;
+	width: fit-content;
 
 	.categoryTab {
 		background: $primary-button-background-2;
 		border: 1px solid $primary-border;
 		box-shadow: 0px 2px 4px 0px rgba(92, 92, 92, 0.1);
 		border-radius: 8px;
-		width: max-content;
 		display: flex;
 		cursor: pointer;
 		padding: 8px 12px;
@@ -28,7 +27,7 @@
 		.dropIcon {
 			margin-top: 4px;
 			margin-left: 4px;
-			transition: all 0.3s;
+			transition: all 0.3s ease-in-out;
 		}
 
 		.rotate0 {
@@ -41,11 +40,11 @@
 	}
 
 	.categoryTabDropdown {
+		z-index: 1;
 		transition: all 0.3s ease-in-out;
 		width: 12rem;
 		position: absolute;
 		max-height: 80vh;
-		z-index: 1;
 		top: 3.8rem;
 		background-color: $primary-button-background-2;
 		border: 1px solid #677b94;
