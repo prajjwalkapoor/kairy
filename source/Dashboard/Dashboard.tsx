@@ -1,6 +1,6 @@
 import React from 'react'
 import useTheme from '../utils/customHooks/useTheme'
-import CategoryDropdown from './components/CategoryDropdown/'
+import CategoryDropdownHeader from './components/CategoryDropdownHeader'
 import SearchBar from './components/SearchBar'
 import ShortcutSection from './components/ShortcutSection/'
 import styles from './dashboard.module.scss'
@@ -21,7 +21,7 @@ const Dashboard: React.FC = () => {
 				</div>
 			</header>
 			<main>
-				<CategoryDropdown />
+				<CategoryDropdownHeader />
 				<ShortcutSection />
 			</main>
 		</div>

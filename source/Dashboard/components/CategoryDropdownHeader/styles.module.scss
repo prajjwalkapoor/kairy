@@ -1,0 +1,112 @@
+@import '../../../styles/fonts';
+@import '../../../styles/reset';
+@import '../../../styles/variables';
+
+.container {
+	width: 73%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	.categoryDropdown {
+		position: relative;
+		width: fit-content;
+
+		.categoryTab {
+			background: $primary-button-background-2;
+			border: 1px solid $primary-border;
+			box-shadow: 0px 2px 4px 0px rgba(92, 92, 92, 0.1);
+			border-radius: 8px;
+			display: flex;
+			cursor: pointer;
+			padding: 8px 12px;
+			justify-content: flex-start;
+			align-items: center;
+
+			p {
+				font-size: 16px;
+				margin: 0;
+				color: #575758;
+				font-weight: 900;
+			}
+
+			.dropIcon {
+				margin-top: 4px;
+				margin-left: 4px;
+				transition: all 0.3s ease-in-out;
+			}
+
+			.rotate0 {
+				transform: rotate(0deg);
+			}
+
+			.rotate180 {
+				transform: rotate(180deg);
+			}
+		}
+
+		.categoryTabDropdown {
+			z-index: 1;
+			transition: all 0.3s ease-in-out;
+			width: 12rem;
+			position: absolute;
+			max-height: 80vh;
+			top: 3.8rem;
+			background-color: $primary-button-background-2;
+			border: 1px solid #677b94;
+			border-radius: 8px;
+			box-shadow: 0px 4px 8px 0px rgba(92, 92, 92, 0.2);
+
+			padding: 0.5rem 0.8rem;
+			font-size: 18px;
+			overflow-y: hidden;
+			transition: max-height 0.2s ease-in-out;
+
+			.selectedCat {
+				color: #4b77ab;
+				font-weight: bold;
+			}
+
+			p {
+				margin-top: 12px;
+				color: $primary-button-text-2;
+				padding: 0;
+			}
+
+			.manageCategory {
+				border-top: 1px solid #677b94;
+				padding-top: 16px;
+				margin-top: 8px;
+				text-align: center;
+				cursor: pointer;
+			}
+
+			.categoryItem {
+				margin: 1rem 0.5rem;
+
+				&:hover {
+					font-weight: 800;
+					cursor: pointer;
+				}
+			}
+		}
+
+		.catDropHidden {
+			opacity: 0;
+			max-height: 0;
+		}
+
+		.catDropVisible {
+			max-height: 80vh;
+			opacity: 1;
+		}
+	}
+	.buttonContainer {
+		.buttonIcons {
+			width: 2rem;
+			height: 2rem;
+			background-color: $primary-button-background;
+			margin: 0 0 0 1rem;
+			border-radius: 4px;
+		}
+	}
+}

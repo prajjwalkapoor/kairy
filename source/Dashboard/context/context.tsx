@@ -25,7 +25,7 @@ const ContextProvide = ({ children }: ContextProps): JSX.Element => {
 				  })
 				: dispatch({
 						type: 'SET_ACTIVE_SHORTCUT_CATEGORY',
-						payload: 'All Categories',
+						payload: 'all',
 				  })
 			res.shortcutCategoryList
 				? dispatch({

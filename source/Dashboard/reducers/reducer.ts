@@ -6,6 +6,7 @@ export const initialState = {
 	activeShortcutCategory: 'All Categories',
 	shortcutCategoryList: [],
 	spaceCategoryList: [],
+	mapper: [],
 }
 export const reducer = (state: IState, action: IAction) => {
 	switch (action.type) {
@@ -33,6 +34,11 @@ export const reducer = (state: IState, action: IAction) => {
 			return {
 				...state,
 				spaceCategoryList: action.payload,
+			}
+		case 'SET_MAPPER':
+			return {
+				...state,
+				mapper: action.payload,
 			}
 		default:
 			return state

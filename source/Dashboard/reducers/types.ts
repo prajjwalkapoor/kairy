@@ -19,6 +19,7 @@ export interface IState {
 	shortcutCategoryList: string[]
 	spaceList: Space[]
 	spaceCategoryList: string[]
+	mapper: Shortcut[]
 }
 export interface IAction {
 	type:
@@ -27,5 +28,6 @@ export interface IAction {
 		| 'SET_ACTIVE_SHORTCUT_CATEGORY'
 		| 'SET_SHORTCUT_CATEGORY_LIST'
 		| 'SET_SPACE_CATEGORY_LIST'
+		| 'SET_MAPPER'
 	payload: any
 }
