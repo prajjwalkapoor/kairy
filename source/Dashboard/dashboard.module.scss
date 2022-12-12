@@ -17,20 +17,16 @@ body {
 	color: $primary-button-text;
 	padding: 0.5rem 1rem;
 	border-radius: 0.5rem;
-	position: absolute;
-	top: 2rem;
-	right: 0;
 }
 .dashboard {
 	margin: 2.5rem 5rem 0 5rem;
 
 	header {
 		background-color: $primary-background;
-		display: grid;
-		grid-template-columns: 7fr 3fr;
-		padding: 3rem 0rem 2rem 0rem;
-		backdrop-filter: blur(20px);
-		margin-top: -3rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 2rem;
 
 		.header-icons {
 			display: flex;
