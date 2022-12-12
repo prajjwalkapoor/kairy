@@ -3,9 +3,11 @@ import { ContextProvider } from '../../context/context'
 import styles from './styles.module.scss'
 const SearchBar: React.FC = () => {
 	const [searchSource, setSearchSource] = useState('Shortcuts')
+	const [searchQuery, setSearchQuery] = useState('')
 	const [isSourceDropdownVisible, setIsSourceDropdownVisible] = useState(false)
 	const [isSearchDropdownVisible, setIsSearchDropdownVisible] = useState(false)
-	const { state } = useContext(ContextProvider)
+	const [googleSearchData, setGoogleSearchData] = useState([] as string[])
+	const { state, dispatch } = useContext(ContextProvider)
 	const searchSourceData = ['Shortcuts', 'Google', 'Bing', 'DuckDuckGo']
 	let sourceDropdownRef = useRef() as React.MutableRefObject<HTMLInputElement>
 	let searchDropdownRef = useRef() as React.MutableRefObject<HTMLInputElement>
@@ -35,12 +37,49 @@ const SearchBar: React.FC = () => {
 		}
 	}, [])
 
-	// const searchShortcutHandler = (query: string) => {
-	// 	let filteredArray = state.shortcutList.filter((shortcut) =>
-	// 		shortcut.title.includes(query)
-	// 	)
-	// 	return filteredArray
-	// }
+	useEffect(() => {
+		if (searchSource == 'Shortcuts') {
+			searchShortcutHandler()
+		} else {
+			googleSearchQueryHandler()
+		}
+	}, [searchQuery])
+
+	const searchShortcutHandler = () => {
+		let filteredSearchArray = state.shortcutList.filter((shortcut) =>
+			shortcut.title.toLowerCase().includes(searchQuery.toLowerCase())
+		)
+		if (searchQuery == '') {
+			let filteredArr = state.shortcutList.filter(
+				(shortcut) => shortcut.category === state.activeShortcutCategory
+			)
+			if (filteredArr.length == 0) {
+				filteredArr = state.shortcutList
+			}
+			dispatch({ type: 'SET_MAPPER', payload: filteredArr })
+		} else {
+			dispatch({
+				type: 'SET_MAPPER',
+				payload: filteredSearchArray,
+			})
+		}
+	}
+	const googleSearchQueryHandler = () => {
+		fetch(
+			`http://suggestqueries.google.com/complete/search?client=chrome&q=${searchQuery}`
+		)
+			.then((res) => res.json())
+			.then((data) => setGoogleSearchData(data[1].slice(0, 5)))
+	}
+	const searchNavigationHandler = (query: string) => {
+		if (searchSource == 'Google') {
+			window.open(`https://www.google.com/search?q=${query}`)
+		} else if (searchSource == 'Bing') {
+			window.open(`https://www.bing.com/search?q=${query}`)
+		} else if (searchSource == 'DuckDuckGo') {
+			window.open(`https://duckduckgo.com/?q=${query}`)
+		}
+	}
 
 	return (
 		<div className={styles.searchContainer}>
@@ -48,8 +87,11 @@ const SearchBar: React.FC = () => {
 				className={styles.searchInput}
 				type='text'
 				placeholder={`Search anything on ${searchSource}`}
-				onFocus={() => {
-					setIsSearchDropdownVisible(true)
+				onChange={(e) => {
+					setSearchQuery(e.target.value)
+					e.target.value == '' || searchSource == 'Shortcuts'
+						? setIsSearchDropdownVisible(false)
+						: setIsSearchDropdownVisible(true)
 				}}
 			/>
 			<svg
@@ -100,9 +142,13 @@ const SearchBar: React.FC = () => {
 			)}
 			{isSearchDropdownVisible && (
 				<div className={styles.searchDropdown} ref={searchDropdownRef}>
-					{searchSourceData.map((query) => {
+					{googleSearchData.map((query) => {
 						return (
-							<p key={query} className={styles.searchQuery}>
+							<p
+								key={query}
+								className={styles.searchQuery}
+								onClick={() => searchNavigationHandler(query)}
+							>
 								{query}
 							</p>
 						)

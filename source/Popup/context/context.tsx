@@ -28,7 +28,7 @@ const ContextProvide = ({ children }: ContextProps): JSX.Element => {
 				browser.storage.local.set({
 					shortcutList: [],
 					spaceList: [],
-					activeShortcutCategory: 'All Categories',
+					activeShortcutCategory: 'all',
 					shortcutCategoryList: [],
 					spaceCategoryList: [],
 				})

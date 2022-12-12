@@ -1,25 +1,22 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { ContextProvider } from '../../context/context'
-import { Shortcut } from '../../reducers/types'
 import ShortcutCard from '../ShortcutCard'
 import styles from './styles.module.scss'
 const ShortcutSection: React.FC = () => {
-	const { state } = useContext(ContextProvider)
+	const { state, dispatch } = useContext(ContextProvider)
 	const [isTasksVisible] = useState(false)
-	const [mapper, setMapper] = useState<Shortcut[]>([])
 	useEffect(() => {
-		if (state.activeShortcutCategory === 'All Categories') {
-			setMapper(state.shortcutList)
+		if (state.activeShortcutCategory === 'all') {
+			dispatch({ type: 'SET_MAPPER', payload: state.shortcutList })
 		} else {
-			setMapper(
-				state.shortcutList.filter(
-					(shortcut) => shortcut.category === state.activeShortcutCategory
-				)
+			let filteredArr = state.shortcutList.filter(
+				(shortcut) => shortcut.category === state.activeShortcutCategory
 			)
+			dispatch({ type: 'SET_MAPPER', payload: filteredArr })
 		}
 
-		console.log(state.activeShortcutCategory, 'state.activeShortcutCategory')
-	}, [state])
+		console.log(state.shortcutList, 'state.activeShortcutCategory')
+	}, [state.activeShortcutCategory, state.shortcutList])
 
 	return (
 		<div
@@ -28,7 +25,7 @@ const ShortcutSection: React.FC = () => {
 			}`}
 		>
 			{state.shortcutList &&
-				mapper.map((item) => {
+				state.mapper.map((item) => {
 					return <ShortcutCard key={item.id} shortcut={item} />
 				})}
 		</div>
