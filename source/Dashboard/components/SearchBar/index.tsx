@@ -8,12 +8,31 @@ const SearchBar: React.FC = () => {
 	const { state } = useContext(ContextProvider)
 	const searchSourceData = ['Shortcuts', 'Google', 'Bing', 'DuckDuckGo']
 	let sourceDropdownRef = useRef() as React.MutableRefObject<HTMLInputElement>
+	let searchDropdownRef = useRef() as React.MutableRefObject<HTMLInputElement>
 	useEffect(() => {
 		document.addEventListener('mousedown', (event) => {
 			if (!sourceDropdownRef.current?.contains(event.target as Node)) {
 				setIsSourceDropdownVisible(false)
 			}
 		})
+		document.addEventListener('mousedown', (event) => {
+			if (!searchDropdownRef.current?.contains(event.target as Node)) {
+				setIsSearchDropdownVisible(false)
+			}
+		})
+
+		return () => {
+			document.removeEventListener('mousedown', (event) => {
+				if (!sourceDropdownRef.current?.contains(event.target as Node)) {
+					setIsSourceDropdownVisible(false)
+				}
+			})
+			document.removeEventListener('mousedown', (event) => {
+				if (!searchDropdownRef.current?.contains(event.target as Node)) {
+					setIsSearchDropdownVisible(false)
+				}
+			})
+		}
 	}, [])
 
 	// const searchShortcutHandler = (query: string) => {
@@ -32,7 +51,6 @@ const SearchBar: React.FC = () => {
 				onFocus={() => {
 					setIsSearchDropdownVisible(true)
 				}}
-				onBlur={() => setIsSearchDropdownVisible(false)}
 			/>
 			<svg
 				className={styles.searchIcon}
@@ -81,9 +99,13 @@ const SearchBar: React.FC = () => {
 				</div>
 			)}
 			{isSearchDropdownVisible && (
-				<div className={styles.searchDropdown}>
-					{searchSourceData.map((source) => {
-						return <p key={source}>{source}</p>
+				<div className={styles.searchDropdown} ref={searchDropdownRef}>
+					{searchSourceData.map((query) => {
+						return (
+							<p key={query} className={styles.searchQuery}>
+								{query}
+							</p>
+						)
 					})}
 				</div>
 			)}
