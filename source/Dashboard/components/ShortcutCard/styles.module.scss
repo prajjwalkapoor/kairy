@@ -79,6 +79,11 @@
 	p {
 		padding: 2px 0;
 		cursor: pointer;
+		margin: 0.5rem 0;
+		&:hover {
+			color: $primary-button-background;
+			background-color: $primary-background;
+		}
 	}
 }
 
