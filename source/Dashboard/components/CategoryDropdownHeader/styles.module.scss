@@ -101,6 +101,9 @@
 		}
 	}
 	.buttonContainer {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
 		.buttonIcons {
 			width: 2rem;
 			height: 2rem;

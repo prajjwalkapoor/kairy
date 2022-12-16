@@ -65,6 +65,18 @@
 	}
 }
 
+.pinIcon {
+	position: absolute;
+	top: 12px;
+	left: 8px;
+
+	svg {
+		width: 12px;
+		height: 12px;
+		fill: #131313;
+	}
+}
+
 .cardMenuDropdown {
 	position: absolute;
 	background-color: $primary-background;
@@ -79,6 +91,11 @@
 	p {
 		padding: 2px 0;
 		cursor: pointer;
+		margin: 0.5rem 0;
+		&:hover {
+			color: $primary-button-background;
+			background-color: $primary-background;
+		}
 	}
 }
 
