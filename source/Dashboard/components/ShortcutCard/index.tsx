@@ -41,16 +41,16 @@ const ShortcutCard: React.FC<IShortcutCardProps> = ({
 	}
 
 	const pinShortcutHandler = () => {
-		let pinShortcut: any = {}
+		let pinShortcutList = state.pinnedShortcutList
 		let filteredShortcutList = state.shortcutList.filter((item) => {
-			if (item.id == shortcut.id) pinShortcut = shortcut
 			return item.id !== shortcut.id
 		})
-		filteredShortcutList.unshift(pinShortcut)
+		pinShortcutList.push({ ...shortcut, isPinned: true })
+		dispatch({ type: 'SET_PINNED_SHORTCUT_LIST', payload: pinShortcutList })
 		dispatch({ type: 'SET_SHORTCUT_LIST', payload: filteredShortcutList })
-		browser.storage.sync.set({
-			shortcut: filteredShortcutList,
-		})
+
+		// TODO: fix this
+		browser.storage.local.set({ pinnedShortcutList: state.pinnedShortcutList })
 
 		setIsCardMenuVisible(false)
 	}
@@ -90,6 +90,23 @@ const ShortcutCard: React.FC<IShortcutCardProps> = ({
 						</svg>
 					</div>
 				)}
+				{shortcut.isPinned && (
+					<div className={styles.pinIcon}>
+						<svg
+							width='27'
+							height='39'
+							viewBox='0 0 27 39'
+							fill='none'
+							xmlns='http://www.w3.org/2000/svg'
+						>
+							<path
+								fill-rule='evenodd'
+								clip-rule='evenodd'
+								d='M26.625 21.1313C26.625 20.25 25.9875 19.5375 25.125 19.2938C23.9391 18.9666 22.8933 18.2593 22.1481 17.2804C21.403 16.3016 20.9996 15.1052 21 13.875V4.5H22.875C23.9062 4.5 24.75 3.65625 24.75 2.625C24.75 1.59375 23.9062 0.75 22.875 0.75H4.125C3.09375 0.75 2.25 1.59375 2.25 2.625C2.25 3.65625 3.09375 4.5 4.125 4.5H6V13.875C6 16.4625 4.25625 18.6375 1.875 19.2938C1.0125 19.5375 0.375 20.25 0.375 21.1313V21.375C0.375 22.4062 1.21875 23.25 2.25 23.25H11.5875L11.625 36.375C11.625 37.4062 12.4688 38.25 13.5 38.25C14.5312 38.25 15.375 37.4062 15.375 36.375L15.3375 23.25H24.75C25.7812 23.25 26.625 22.4062 26.625 21.375V21.1313Z'
+							/>
+						</svg>
+					</div>
+				)}
 				<div className={styles.cardDesc}>
 					<div className={styles.logoContainer}>
 						<img src={shortcut.icon} />
@@ -99,7 +116,11 @@ const ShortcutCard: React.FC<IShortcutCardProps> = ({
 							isCardMenuVisible ? styles.visible : styles.hide
 						}`}
 					>
-						<p onClick={pinShortcutHandler}>Pin</p>
+						{shortcut.isPinned ? (
+							<p>Unpin</p>
+						) : (
+							<p onClick={pinShortcutHandler}>Pin</p>
+						)}
 						<p onClick={editHandler}>Edit</p>
 						<p onClick={handleDeleteShortcut}>Delete</p>
 					</div>

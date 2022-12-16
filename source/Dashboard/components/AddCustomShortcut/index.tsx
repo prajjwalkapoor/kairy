@@ -1,5 +1,6 @@
 import { nanoid } from 'nanoid'
 import React, { useContext, useEffect, useRef, useState } from 'react'
+import { makeUrl } from '../../../utils/makeUrl'
 import { ContextProvider } from '../../context/context'
 import { Shortcut } from '../../reducers/types'
 import ShortcutCard from '../ShortcutCard'
@@ -20,8 +21,6 @@ const AddCustomShortcut: React.FC<IAddCustomShortcutProps> = ({
 	const [category, setCategory] = useState('')
 	const [id, setId] = useState(nanoid())
 	const [icon, setIcon] = useState('')
-
-	console.log()
 	const mainRef = useRef() as React.MutableRefObject<HTMLInputElement>
 	useEffect(() => {
 		if (shortcutData) {
@@ -51,11 +50,12 @@ const AddCustomShortcut: React.FC<IAddCustomShortcutProps> = ({
 		if (title && url && category) {
 			const updatedShortcut: Shortcut = {
 				title: title,
-				url: url,
+				url: makeUrl(url),
 				id: id,
 				category: category,
-				icon: icon,
+				icon: icon || `https://www.google.com/s2/favicons?domain=${url}`,
 				modifiedOn: new Date().getTime().toString(),
+				isPinned: false,
 			}
 			if (shortcutData) {
 				const newShortcutList = state.shortcutList.map((shortcut) => {
@@ -135,6 +135,7 @@ const AddCustomShortcut: React.FC<IAddCustomShortcutProps> = ({
 								category: category,
 								icon: icon || `https://www.google.com/s2/favicons?domain_url=${url}`,
 								modifiedOn: new Date().getTime().toString(),
+								isPinned: false,
 							}}
 							isPreview
 						/>

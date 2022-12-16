@@ -25,6 +25,10 @@ const ShortcutSection: React.FC = () => {
 				isTasksVisible ? styles.halfGrid : styles.fullGrid
 			}`}
 		>
+			{state.pinnedShortcutList.length > 0 &&
+				state.pinnedShortcutList.map((item) => {
+					return <ShortcutCard key={item.id} shortcut={item} />
+				})}
 			{state.shortcutList &&
 				state.mapper.map((item) => {
 					return <ShortcutCard key={item.id} shortcut={item} />

@@ -11,6 +11,8 @@ const ContextProvide = ({ children }: ContextProps): JSX.Element => {
 	const [state, dispatch] = useReducer(reducer, initialState)
 	useEffect(() => {
 		browser.storage.local.get().then((res) => {
+			console.log(res, 'localstorage')
+
 			res.shortcutList
 				? dispatch({ type: 'SET_SHORTCUT_LIST', payload: res.shortcutList })
 				: dispatch({ type: 'SET_SHORTCUT_LIST', payload: [] })
@@ -39,12 +41,27 @@ const ContextProvide = ({ children }: ContextProps): JSX.Element => {
 						payload: res.spaceCategoryList,
 				  })
 				: dispatch({ type: 'SET_SPACE_CATEGORY_LIST', payload: [] })
+
+			res.pinnedShortcutList
+				? dispatch({
+						type: 'SET_PINNED_SHORTCUT_LIST',
+						payload: res.pinnedShortcutList,
+				  })
+				: dispatch({ type: 'SET_PINNED_SHORTCUT_LIST', payload: [] })
 		})
 	}, [])
 
 	useEffect(() => {
 		browser.storage.local.set({ shortcutList: state.shortcutList })
+		// console.log('shortcutList', state.shortcutList)
 	}, [state.shortcutList])
+
+	// TODO: fix this
+
+	// useEffect(() => {
+	// 	console.log('pimmedShortcutList', state.pinnedShortcutList)
+	// 	browser.storage.local.set({ pinnedShortcutList: state.pinnedShortcutList })
+	// }, [state.pinnedShortcutList])
 
 	return (
 		<ContextProvider.Provider value={{ state, dispatch }}>
