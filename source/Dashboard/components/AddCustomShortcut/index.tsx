@@ -138,9 +138,6 @@ const AddCustomShortcut: React.FC<IAddCustomShortcutProps> = ({
 							onChange={(e) => setCategory(e.target.value)}
 							value={category}
 						>
-							<option value='' defaultChecked>
-								Choose Category
-							</option>
 							<option value='all' defaultChecked>
 								All Categories
 							</option>
@@ -179,7 +176,11 @@ const AddCustomShortcut: React.FC<IAddCustomShortcutProps> = ({
 					>
 						Cancel
 					</button>
-					<button className={styles.saveBtn} onClick={saveHandler}>
+					<button
+						className={styles.saveBtn}
+						onClick={saveHandler}
+						disabled={!title || !url}
+					>
 						Save
 					</button>
 				</div>

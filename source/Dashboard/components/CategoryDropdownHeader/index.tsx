@@ -204,7 +204,7 @@ const CategoryDropdownHeader: React.FC = () => {
 					</button>
 					<button
 						className={`${styles.buttonIcons} ${styles.sortBtn}`}
-						onClick={() => setIsSortDropdownVisible(true)}
+						onClick={() => setIsSortDropdownVisible(!isSortDropdownVisible)}
 					>
 						<svg
 							width='16'
