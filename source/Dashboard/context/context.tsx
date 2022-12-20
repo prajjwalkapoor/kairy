@@ -41,27 +41,16 @@ const ContextProvide = ({ children }: ContextProps): JSX.Element => {
 						payload: res.spaceCategoryList,
 				  })
 				: dispatch({ type: 'SET_SPACE_CATEGORY_LIST', payload: [] })
-
-			res.pinnedShortcutList
-				? dispatch({
-						type: 'SET_PINNED_SHORTCUT_LIST',
-						payload: res.pinnedShortcutList,
-				  })
-				: dispatch({ type: 'SET_PINNED_SHORTCUT_LIST', payload: [] })
 		})
 	}, [])
 
 	useEffect(() => {
 		browser.storage.local.set({ shortcutList: state.shortcutList })
-		// console.log('shortcutList', state.shortcutList)
+		dispatch({ type: 'SET_MAPPER', payload: state.shortcutList })
 	}, [state.shortcutList])
 
-	// TODO: fix this
-
-	// useEffect(() => {
-	// 	console.log('pimmedShortcutList', state.pinnedShortcutList)
-	// 	browser.storage.local.set({ pinnedShortcutList: state.pinnedShortcutList })
-	// }, [state.pinnedShortcutList])
+	console.log(state.mapper, 'state.mapper')
+	console.log(state.shortcutList, 'state.shortcutList')
 
 	return (
 		<ContextProvider.Provider value={{ state, dispatch }}>

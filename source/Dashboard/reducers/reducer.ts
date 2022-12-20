@@ -1,11 +1,10 @@
-import { IAction, IState } from './types'
+import { IAction, IState, Shortcut } from './types'
 
 export const initialState = {
 	shortcutList: [],
 	spaceList: [],
 	activeShortcutCategory: 'All Categories',
 	shortcutCategoryList: [],
-	pinnedShortcutList: [],
 	spaceCategoryList: [],
 	mapper: [],
 }
@@ -26,11 +25,6 @@ export const reducer = (state: IState, action: IAction) => {
 				...state,
 				shortcutCategoryList: action.payload,
 			}
-		case 'SET_PINNED_SHORTCUT_LIST':
-			return {
-				...state,
-				pinnedShortcutList: action.payload,
-			}
 		case 'SET_SPACE_LIST':
 			return {
 				...state,
@@ -42,6 +36,15 @@ export const reducer = (state: IState, action: IAction) => {
 				spaceCategoryList: action.payload,
 			}
 		case 'SET_MAPPER':
+			action.payload.sort((a: Shortcut, b: Shortcut) => {
+				if (a.isPinned && !b.isPinned) {
+					return -1
+				} else if (!a.isPinned && b.isPinned) {
+					return 1
+				} else {
+					return 0
+				}
+			})
 			return {
 				...state,
 				mapper: action.payload,
