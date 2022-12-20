@@ -5,6 +5,26 @@ import { ContextProvider } from '../../context/context'
 import { Shortcut } from '../../reducers/types'
 import ShortcutCard from '../ShortcutCard'
 import styles from './styles.module.scss'
+import { motion } from 'framer-motion'
+
+const variants = {
+	enter: {
+		opacity: 1,
+		y: 0,
+		transition: {
+			duration: 0.2,
+			ease: 'easeOut',
+		},
+	},
+	exit: {
+		opacity: 0,
+		y: 30,
+		transition: {
+			duration: 0.3,
+			ease: 'easeIn',
+		},
+	},
+}
 
 interface IAddCustomShortcutProps {
 	// setstate type
@@ -80,7 +100,13 @@ const AddCustomShortcut: React.FC<IAddCustomShortcutProps> = ({
 	}
 
 	return (
-		<div className={styles.container}>
+		<motion.div
+			className={styles.container}
+			variants={variants}
+			initial='exit'
+			animate='enter'
+			exit='exit'
+		>
 			<div className={styles.main} ref={mainRef}>
 				<h1 className={styles.headerTitle}>
 					{shortcutData ? 'Edit Shortcut' : 'Create Shortcut'}
@@ -155,7 +181,7 @@ const AddCustomShortcut: React.FC<IAddCustomShortcutProps> = ({
 					</button>
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	)
 }
 

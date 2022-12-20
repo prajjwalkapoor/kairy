@@ -42,7 +42,6 @@ const CategoryDropdownHeader: React.FC = () => {
 			{isAddShortcutVisible && (
 				<>
 					<AddCustomShortcut setIsAddShortcutVisible={setIsAddShortcutVisible} />
-					<h1>This is for test</h1>
 				</>
 			)}
 			<div className={styles.container}>
