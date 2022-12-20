@@ -68,6 +68,8 @@ const AddCustomShortcut: React.FC<IAddCustomShortcutProps> = ({
 	console.log(icon)
 	const saveHandler = () => {
 		if (title && url && category) {
+			console.log('save')
+
 			const updatedShortcut: Shortcut = {
 				title: title,
 				url: makeUrl(url),
@@ -100,14 +102,15 @@ const AddCustomShortcut: React.FC<IAddCustomShortcutProps> = ({
 	}
 
 	return (
-		<motion.div
-			className={styles.container}
-			variants={variants}
-			initial='exit'
-			animate='enter'
-			exit='exit'
-		>
-			<div className={styles.main} ref={mainRef}>
+		<div className={styles.container}>
+			<motion.div
+				variants={variants}
+				initial='exit'
+				animate='enter'
+				exit='exit'
+				className={styles.main}
+				ref={mainRef}
+			>
 				<h1 className={styles.headerTitle}>
 					{shortcutData ? 'Edit Shortcut' : 'Create Shortcut'}
 				</h1>
@@ -135,9 +138,6 @@ const AddCustomShortcut: React.FC<IAddCustomShortcutProps> = ({
 							onChange={(e) => setCategory(e.target.value)}
 							value={category}
 						>
-							<option value='' defaultChecked>
-								Choose Category
-							</option>
 							<option value='all' defaultChecked>
 								All Categories
 							</option>
@@ -176,12 +176,16 @@ const AddCustomShortcut: React.FC<IAddCustomShortcutProps> = ({
 					>
 						Cancel
 					</button>
-					<button className={styles.saveBtn} onClick={saveHandler}>
+					<button
+						className={styles.saveBtn}
+						onClick={saveHandler}
+						disabled={!title || !url}
+					>
 						Save
 					</button>
 				</div>
-			</div>
-		</motion.div>
+			</motion.div>
+		</div>
 	)
 }
 

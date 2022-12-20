@@ -41,17 +41,24 @@ const ShortcutCard: React.FC<IShortcutCardProps> = ({
 	}
 
 	const pinShortcutHandler = () => {
-		let pinShortcutList = state.pinnedShortcutList
-		let filteredShortcutList = state.shortcutList.filter((item) => {
-			return item.id !== shortcut.id
+		let pinnedArr = state.shortcutList.map((item) => {
+			if (item.id === shortcut.id) {
+				item.isPinned = !item.isPinned
+			}
+			return item
 		})
-		pinShortcutList.push({ ...shortcut, isPinned: true })
-		dispatch({ type: 'SET_PINNED_SHORTCUT_LIST', payload: pinShortcutList })
-		dispatch({ type: 'SET_SHORTCUT_LIST', payload: filteredShortcutList })
+		dispatch({ type: 'SET_SHORTCUT_LIST', payload: pinnedArr })
+		setIsCardMenuVisible(false)
+	}
 
-		// TODO: fix this
-		browser.storage.local.set({ pinnedShortcutList: state.pinnedShortcutList })
-
+	const unpinnedShortcutHandler = () => {
+		let unpinnedArr = state.shortcutList.map((item) => {
+			if (item.id === shortcut.id) {
+				item.isPinned = !item.isPinned
+			}
+			return item
+		})
+		dispatch({ type: 'SET_SHORTCUT_LIST', payload: unpinnedArr })
 		setIsCardMenuVisible(false)
 	}
 
@@ -117,7 +124,7 @@ const ShortcutCard: React.FC<IShortcutCardProps> = ({
 						}`}
 					>
 						{shortcut.isPinned ? (
-							<p>Unpin</p>
+							<p onClick={unpinnedShortcutHandler}>Unpin</p>
 						) : (
 							<p onClick={pinShortcutHandler}>Pin</p>
 						)}
