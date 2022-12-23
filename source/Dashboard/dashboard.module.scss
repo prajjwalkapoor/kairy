@@ -7,9 +7,12 @@ body {
 	font-family: $nunito;
 	font-weight: $light;
 }
+img {
+	filter: none !important;
+}
 .container {
 	width: 100vw;
-	height: 100vh;
+	height: 100%;
 	background-color: $primary-background;
 }
 .themebtn {
@@ -20,6 +23,7 @@ body {
 }
 .dashboard {
 	margin: 2.5rem 5rem 0 5rem;
+	height: 100%;
 
 	header {
 		background-color: $primary-background;
@@ -55,8 +59,7 @@ body {
 	}
 
 	main {
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-template-rows: 1fr 5fr;
+		display: flex;
+		flex-direction: column;
 	}
 }

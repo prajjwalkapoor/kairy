@@ -1,11 +1,11 @@
 import React, { useEffect, useContext, useState } from 'react'
 import { browser } from 'webextension-polyfill-ts'
-import PopupTabs from './components/PopupTabs/PopupTabs'
+// import PopupTabs from './components/PopupTabs/PopupTabs'
 import styles from './popup.module.scss'
 import { ContextProvider } from './context/context'
 import ShortcutTab from './components/ShortcutTab/ShortcutTab'
 import PopupButtons from './components/PopupButtons/PopupButtons'
-import SpaceTab from './components/SpaceTab/SpaceTab'
+// import SpaceTab from './components/SpaceTab/SpaceTab'
 import { motion } from 'framer-motion'
 
 const Popup: React.FC = () => {
@@ -35,9 +35,10 @@ const Popup: React.FC = () => {
 					setCustomTitle(e?.target.value)
 				}}
 			/>
-			<PopupTabs />
-			{state.activeTab === 'shortcut' && <ShortcutTab />}
-			{state.activeTab === 'space' && <SpaceTab />}
+			{/* <PopupTabs /> */}
+			{/* {state.activeTab === 'shortcut' && <ShortcutTab />} */}
+			{/* {state.activeTab === 'space' && <SpaceTab />} */}
+			<ShortcutTab />
 			<PopupButtons />
 		</motion.div>
 	)

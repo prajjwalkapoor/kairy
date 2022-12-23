@@ -46,11 +46,9 @@ const ContextProvide = ({ children }: ContextProps): JSX.Element => {
 
 	useEffect(() => {
 		browser.storage.local.set({ shortcutList: state.shortcutList })
-		dispatch({ type: 'SET_MAPPER', payload: state.shortcutList })
 	}, [state.shortcutList])
-
-	console.log(state.mapper, 'state.mapper')
-	console.log(state.shortcutList, 'state.shortcutList')
+	console.log(state, 'state')
+	// console.log(state.shortcutList, 'state.shortcutList')
 
 	return (
 		<ContextProvider.Provider value={{ state, dispatch }}>

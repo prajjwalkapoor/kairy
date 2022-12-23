@@ -96,7 +96,7 @@
 		}
 
 		.catDropVisible {
-			max-height: 80vh;
+			max-height: 40rem;
 			opacity: 1;
 		}
 	}
@@ -133,7 +133,7 @@
 						transition: all 0.2s ease-in-out;
 						&:hover {
 							cursor: pointer;
-							color: $primary-button-background;
+							font-weight: 800;
 						}
 					}
 				}
@@ -149,6 +149,9 @@
 			background-color: $primary-button-background;
 			margin: 0 0 0 1rem;
 			border-radius: 4px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 			svg {
 				fill: $primary-button-text;
 			}

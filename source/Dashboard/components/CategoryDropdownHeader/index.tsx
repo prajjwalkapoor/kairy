@@ -67,10 +67,10 @@ const CategoryDropdownHeader: React.FC = () => {
 			})
 		} else if (sortBy === 'date') {
 			sortedArr = state.mapper.sort((a: Shortcut, b: Shortcut) => {
-				if (a.modifiedOn < b.modifiedOn) {
+				if (a.modifiedOn > b.modifiedOn) {
 					return -1
 				}
-				if (a.modifiedOn > b.modifiedOn) {
+				if (a.modifiedOn < b.modifiedOn) {
 					return 1
 				}
 				return 0
