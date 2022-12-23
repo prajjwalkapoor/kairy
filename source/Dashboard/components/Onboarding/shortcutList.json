@@ -1,0 +1,248 @@
+[
+	{
+		"shortcut": {
+			"category": "Search Engines",
+			"icon": "https://www.google.com/s2/favicons?domain=www.bing.com",
+			"id": "Wnn13cM2FBX7bI-NDpX_H",
+			"modifiedOn": "1671728138872",
+			"title": "Bing",
+			"url": "https://www.bing.com/"
+		},
+		"isSelected": true
+	},
+	{
+		"shortcut": {
+			"category": "Design",
+			"icon": "https://www.google.com/s2/favicons?domain=www.behance.net",
+			"id": "0YuarS0BE4E-8xBSGCReO",
+			"modifiedOn": "1671730072793",
+			"title": "Behance",
+			"url": "https://www.behance.net/"
+		},
+		"isSelected": true
+	},
+	{
+		"shortcut": {
+			"category": "Coding",
+			"icon": "https://www.google.com/s2/favicons?domain=codesandbox.io",
+			"id": "JQEkdEfuYCF-QTiWEgmom",
+			"isPinned": true,
+			"modifiedOn": "1671730259287",
+			"title": "CodeSandbox",
+			"url": "https://codesandbox.io/"
+		},
+		"isSelected": true
+	},
+	{
+		"shortcut": {
+			"category": "Coding",
+			"icon": "https://www.google.com/s2/favicons?domain=codeforces.com",
+			"id": "3GV5YraElnjaReHrKHVQ-",
+			"modifiedOn": "1671730331136",
+			"title": "Codeforces",
+			"url": "https://codeforces.com/"
+		},
+		"isSelected": true
+	},
+	{
+		"shortcut": {
+			"category": "Coding",
+			"icon": "https://www.google.com/s2/favicons?domain=www.codechef.com",
+			"id": "rIPq1QDOwQYMl7TXaHfZu",
+			"modifiedOn": "1671730444583",
+			"title": "CodeChef",
+			"url": "https://www.codechef.com/"
+		},
+		"isSelected": true
+	},
+	{
+		"shortcut": {
+			"category": "Design",
+			"icon": "https://www.google.com/s2/favicons?domain=canva.com",
+			"id": "ZVYe6EyJP-LBUsJkdXNON",
+			"isPinned": false,
+			"modifiedOn": "1671730530507",
+			"title": "Canva",
+			"url": "https://canva.com"
+		},
+		"isSelected": true
+	},
+	{
+		"shortcut": {
+			"category": "Productivity",
+			"icon": "https://www.google.com/s2/favicons?domain=calendly.com",
+			"id": "fIU2MKovVomaMEnwGpIUx",
+			"modifiedOn": "1671730769487",
+			"title": "Calendly",
+			"url": "https://calendly.com/"
+		},
+		"isSelected": true
+	},
+	{
+		"shortcut": {
+			"category": "Search Engines",
+			"icon": "https://www.google.com/s2/favicons?domain=duckduckgo.com",
+			"id": "QHBAsc6M8QjeZWBvuSxPU",
+			"modifiedOn": "1671728102092",
+			"title": "DuckDuckGo",
+			"url": "https://duckduckgo.com/?"
+		},
+		"isSelected": false
+	},
+	{
+		"shortcut": {
+			"category": "Design",
+			"icon": "https://www.google.com/s2/favicons?domain=dribbble.com",
+			"id": "od8jgwdpsUR3wjgjSDETz",
+			"modifiedOn": "1671730028596",
+			"title": "Dribbble",
+			"url": "https://dribbble.com/"
+		},
+		"isSelected": true
+	},
+	{
+		"shortcut": {
+			"category": "Socials",
+			"icon": "https://www.google.com/s2/favicons?domain=www.facebook.com",
+			"id": "f32ZRlFpK4IbQ2hnydsA7",
+			"modifiedOn": "1671729958544",
+			"title": "Facebook",
+			"url": "https://www.facebook.com/"
+		},
+		"isSelected": false
+	},
+	{
+		"shortcut": {
+			"category": "Design",
+			"icon": "https://www.google.com/s2/favicons?domain=figma.com",
+			"id": "Bp9PZ8n93k0Ld2JY42SZG",
+			"isPinned": false,
+			"modifiedOn": "1671730495102",
+			"title": "Figma",
+			"url": "https://figma.com"
+		},
+		"isSelected": false
+	},
+	{
+		"shortcut": {
+			"category": "Productivity",
+			"icon": "https://www.google.com/s2/favicons?domain=docs.google.com",
+			"id": "7Ss0OjIc1GKldQywiTix5",
+			"isPinned": false,
+			"modifiedOn": "1671729762358",
+			"title": "Google Docs",
+			"url": "https://docs.google.com/"
+		},
+		"isSelected": false
+	},
+	{
+		"shortcut": {
+			"category": "Search Engines",
+			"icon": "https://www.google.com/s2/favicons?domain=www.google.com",
+			"id": "vM7oHJJLURaqz3TUmMfVp",
+			"modifiedOn": "1671727950101",
+			"title": "Google",
+			"url": "https://www.google.com/"
+		},
+		"isSelected": true
+	},
+	{
+		"shortcut": {
+			"category": "Coding",
+			"icon": "https://www.google.com/s2/favicons?domain=github.com",
+			"id": "mVMdxs_EPdl8ojWDeixCl",
+			"modifiedOn": "1671730238572",
+			"title": "GitHub",
+			"url": "https://github.com/"
+		},
+		"isSelected": false
+	},
+	{
+		"shortcut": {
+			"category": "Socials",
+			"icon": "https://www.google.com/s2/favicons?domain=www.instagram.com",
+			"id": "gnn7yc9pfirz4190Auz0B",
+			"modifiedOn": "1671728615280",
+			"title": "Instagram",
+			"url": "https://www.instagram.com/"
+		},
+		"isSelected": true
+	},
+	{
+		"shortcut": {
+			"category": "Socials",
+			"icon": "https://www.google.com/s2/favicons?domain=www.linkedin.com",
+			"id": "zXhZGkUQg_Qi2xmCPRiCW",
+			"modifiedOn": "1671728644484",
+			"title": "LinkedIn",
+			"url": "https://www.linkedin.com/feed/"
+		},
+		"isSelected": false
+	},
+	{
+		"shortcut": {
+			"category": "Coding",
+			"icon": "https://www.google.com/s2/favicons?domain=leetcode.com",
+			"id": "g6W3GIA0v2NqHm3_4pU5B",
+			"modifiedOn": "1671730304782",
+			"title": "LeetCode",
+			"url": "https://leetcode.com/"
+		},
+		"isSelected": true
+	},
+	{
+		"shortcut": {
+			"category": "Productivity",
+			"icon": "https://www.google.com/s2/favicons?domain=www.notion.so",
+			"id": "5aA57isUyvHrogTGjdez-",
+			"modifiedOn": "1671728443432",
+			"title": "Notion",
+			"url": "https://www.notion.so/prajjwalkapoor/Go-Go-Go-8a2283140ac845ddb86722cb9b966a52"
+		},
+		"isSelected": true
+	},
+	{
+		"shortcut": {
+			"category": "Productivity",
+			"icon": "https://www.google.com/s2/favicons?domain=www.producthunt.com",
+			"id": "e6Wqj7kZz1z81lYhAmYCG",
+			"modifiedOn": "1671730691516",
+			"title": "Product Hunt",
+			"url": "https://www.producthunt.com/"
+		},
+		"isSelected": false
+	},
+	{
+		"shortcut": {
+			"category": "Coding",
+			"icon": "https://www.google.com/s2/favicons?domain=stackoverflow.com",
+			"id": "eHSm4fqrFqNAd5m3r5ENn",
+			"modifiedOn": "1671730599998",
+			"title": "StackOverflow",
+			"url": "https://stackoverflow.com/"
+		},
+		"isSelected": true
+	},
+	{
+		"shortcut": {
+			"category": "Socials",
+			"icon": "https://www.google.com/s2/favicons?domain=twitter.com",
+			"id": "xLjNR094lnea9mFcEwPT1",
+			"modifiedOn": "1671729884679",
+			"title": "Twitter",
+			"url": "https://twitter.com/home"
+		},
+		"isSelected": true
+	},
+	{
+		"shortcut": {
+			"category": "Socials",
+			"icon": "https://www.google.com/s2/favicons?domain=discord.com",
+			"id": "6d9o1JAhsUWbLjghfxf2s",
+			"modifiedOn": "1671731151342",
+			"title": "Discord",
+			"url": "https://discord.com/"
+		},
+		"isSelected": true
+	}
+]

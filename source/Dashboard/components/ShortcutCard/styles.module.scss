@@ -2,8 +2,8 @@
 @import '../../../styles/reset';
 @import '../../../styles/variables';
 .shortcutCard {
-	width: 164px;
-	height: 128px;
+	width: 10.7rem;
+	height: 8.2rem;
 	background-color: $card-background;
 	box-shadow: 0px 4px 8px 0px rgba(92, 92, 92, 0.2);
 	position: relative;
@@ -71,8 +71,8 @@
 	left: 8px;
 
 	svg {
-		width: 12px;
-		height: 12px;
+		width: 14px;
+		height: 14px;
 		fill: #131313;
 	}
 }
@@ -105,7 +105,7 @@
 	display: flex;
 	flex-direction: column;
 	border-radius: 0 0 6px 6px;
-	max-width: 164px;
+	width: 100%;
 	padding: 10px;
 
 	h1 {

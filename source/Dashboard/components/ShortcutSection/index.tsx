@@ -16,7 +16,7 @@ const ShortcutSection: React.FC = () => {
 			dispatch({ type: 'SET_MAPPER', payload: filteredArr })
 		}
 
-		console.log(state.shortcutList, 'state.activeShortcutCategory')
+		console.log('changed with active category')
 	}, [state.activeShortcutCategory, state.shortcutList])
 
 	return (

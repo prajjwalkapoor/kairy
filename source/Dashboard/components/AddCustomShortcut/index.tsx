@@ -38,7 +38,7 @@ const AddCustomShortcut: React.FC<IAddCustomShortcutProps> = ({
 	const { state, dispatch } = useContext(ContextProvider)
 	const [title, setTitle] = useState('')
 	const [url, setUrl] = useState('')
-	const [category, setCategory] = useState('')
+	const [category, setCategory] = useState('all')
 	const [id, setId] = useState(nanoid())
 	const [icon, setIcon] = useState('')
 	const mainRef = useRef() as React.MutableRefObject<HTMLInputElement>
@@ -65,11 +65,9 @@ const AddCustomShortcut: React.FC<IAddCustomShortcutProps> = ({
 	// useEffect(() => {
 	// 	setIcon(getIcon(url))
 	// }, [url])
-	console.log(icon)
+
 	const saveHandler = () => {
 		if (title && url && category) {
-			console.log('save')
-
 			const updatedShortcut: Shortcut = {
 				title: title,
 				url: makeUrl(url),
@@ -96,7 +94,7 @@ const AddCustomShortcut: React.FC<IAddCustomShortcutProps> = ({
 					payload: [...state.shortcutList, updatedShortcut],
 				})
 			}
-
+			console.log('saved')
 			setIsAddShortcutVisible(false)
 		}
 	}

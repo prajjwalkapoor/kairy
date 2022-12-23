@@ -1,0 +1,27 @@
+@import '../../../styles/fonts';
+@import '../../../styles/reset';
+@import '../../../styles/variables';
+
+.container {
+	display: flex;
+	justify-content: end;
+	&:last-child {
+		margin-right: 0;
+	}
+	button {
+		width: 2rem;
+		height: 2rem;
+		background-color: $primary-button-background;
+		border-radius: 4px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 0 0.5rem;
+		&:hover {
+			cursor: pointer;
+		}
+		svg {
+			fill: $primary-button-text;
+		}
+	}
+}
