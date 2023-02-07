@@ -3,7 +3,9 @@ import { ContextProvider } from '../../context/context'
 import styles from './styles.module.scss'
 
 const SearchBar: React.FC = () => {
-	const [searchSource, setSearchSource] = useState('Shortcuts')
+	const [searchSource, setSearchSource] = useState(
+		localStorage.getItem('searchSource') || 'Shortcuts'
+	)
 	const [searchQuery, setSearchQuery] = useState('')
 	const [isSourceDropdownVisible, setIsSourceDropdownVisible] = useState(false)
 	const [isSearchDropdownVisible, setIsSearchDropdownVisible] = useState(false)
@@ -160,7 +162,10 @@ const SearchBar: React.FC = () => {
 							<p
 								key={source}
 								onClick={() => {
-									setSearchSource(source)
+									setSearchSource(() => {
+										localStorage.setItem('searchSource', source)
+										return source
+									})
 									setIsSourceDropdownVisible(false)
 								}}
 							>
