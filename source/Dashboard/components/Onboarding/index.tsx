@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
 import { OnboardingScreenOne } from './OnboardingScreenOne'
-import { OnboardingScreenThree } from './OnboardingScreenThree'
 import { OnboardingScreenTwo } from './OnboardingScreenTwo'
+import { OnboardingScreenThree } from './OnboardingScreenThree'
 
 interface IOnboardingProps {
 	setOnboarding: React.Dispatch<React.SetStateAction<boolean | undefined>>
@@ -25,7 +25,7 @@ export const Onboarding: React.FC<IOnboardingProps> = ({ setOnboarding }) => {
 		<div className={styles.main}>
 			<div className={styles.header}>
 				<h1>Getting Started</h1>
-				<p>{currentScreen} of 2</p>
+				<p>{currentScreen} of 3</p>
 			</div>
 			{currentScreen == 1 && (
 				<OnboardingScreenOne setCurrentScreen={setCurrentScreen} />
