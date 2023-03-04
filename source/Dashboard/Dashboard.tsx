@@ -5,17 +5,20 @@ import { Onboarding } from './components/Onboarding'
 import SearchBar from './components/SearchBar'
 import ShortcutSection from './components/ShortcutSection'
 import styles from './dashboard.module.scss'
-
+import 'tippy.js/dist/tippy.css'
+import { browser } from 'webextension-polyfill-ts'
 const Dashboard: React.FC = () => {
 	const [onboarding, setOnboarding] = useState<boolean | undefined>(undefined)
 	useEffect(() => {
-		if (!localStorage.getItem('kairy.theme')) {
-			document.querySelector(':root')!.setAttribute('theme', 'light')
-		} else {
-			document
-				.querySelector(':root')!
-				.setAttribute('theme', localStorage.getItem('kairy.theme')!)
-		}
+		browser.storage.local.get('preferences').then((res) => {
+			if (res.preferences?.theme) {
+				document
+					.querySelector(':root')!
+					.setAttribute('theme', res.preferences.theme)
+			} else {
+				document.querySelector(':root')!.setAttribute('theme', 'light')
+			}
+		})
 
 		if (localStorage.getItem('onboarding') === 'true') {
 			setOnboarding(true)

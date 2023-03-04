@@ -5,3 +5,8 @@ export const getDomain = (url: string): string => {
 		return url.split('/')[0]
 	}
 }
+
+export const getDomainName = (url: string): string => {
+	const domain = getDomain(url)
+	return domain.startsWith('www.') ? domain.split('www.')[1] : domain
+}

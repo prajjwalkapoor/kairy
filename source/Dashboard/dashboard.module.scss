@@ -6,6 +6,7 @@ body {
 	color: $primary-text;
 	font-family: $nunito;
 	font-weight: $light;
+	min-height: fit-content;
 }
 img {
 	filter: none !important;

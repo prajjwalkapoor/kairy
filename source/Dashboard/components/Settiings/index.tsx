@@ -1,7 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import styles from './styles.module.scss'
 import { motion } from 'framer-motion'
 import useTheme from '../../../utils/customHooks/useTheme'
+import { ContextProvider } from '../../context/context'
+import { browser } from 'webextension-polyfill-ts'
 interface ISettingsProps {
 	onClose: React.Dispatch<React.SetStateAction<Boolean>>
 }
@@ -29,7 +31,36 @@ const Settings: React.FC<ISettingsProps> = ({ onClose }) => {
 	const mainRef = useRef() as React.MutableRefObject<HTMLInputElement>
 	const [currentTab, setCurrentTab] = useState('general')
 	const { toggleTheme, theme } = useTheme()
-
+	const { state, dispatch } = useContext(ContextProvider)
+	const handleImport = (e: any) => {
+		const fileReader = new FileReader()
+		fileReader.readAsText(e.target.files[0], 'UTF-8')
+		fileReader.onloadend = (e) => {
+			const jsonData = JSON.parse(e.target?.result as string)
+			Object.keys(jsonData).forEach((key) => {
+				if (key === 'preferences') {
+					browser.storage.sync.set({ preferences: jsonData[key] })
+					dispatch({ type: 'SET_PREFERENCES', payload: jsonData[key] })
+				} else if (key === 'shortcutList') {
+					browser.storage.sync.set({ shortcutList: jsonData[key] })
+					dispatch({ type: 'SET_SHORTCUT_LIST', payload: jsonData[key] })
+				} else if (key === 'shortcutCategoryList') {
+					browser.storage.sync.set({ shortcutCategoryList: jsonData[key] })
+					dispatch({ type: 'SET_SHORTCUT_CATEGORY_LIST', payload: jsonData[key] })
+				}
+			})
+			window.location.reload()
+		}
+	}
+	const exportData = (data: any) => {
+		const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
+			JSON.stringify(data)
+		)}`
+		const link = document.createElement('a')
+		link.href = jsonString
+		link.download = 'data.json'
+		link.click()
+	}
 	useEffect(() => {
 		function handleClickOutside(event: any) {
 			if (mainRef.current && !mainRef.current.contains(event.target)) {
@@ -81,24 +112,67 @@ const Settings: React.FC<ISettingsProps> = ({ onClose }) => {
 						{currentTab === 'general' && (
 							<div className={styles.general}>
 								<div className={styles.contentItem}>
-									<p>Language</p>
-									<select name='' id=''>
-										<option value=''>English</option>
-									</select>
-								</div>
-								<div className={styles.contentItem}>
 									<p>Open URLs in new tab</p>
 									<div className={styles.themeBtn}>
-										<button className={theme === 'light' ? styles.active : ''}>On</button>
-										<button className={theme === 'dark' ? styles.active : ''}>Off</button>
+										<button
+											className={state.preferences?.urlNewTab ? styles.active : ''}
+											onClick={() =>
+												dispatch({
+													type: 'SET_PREFERENCES',
+													payload: {
+														...state.preferences,
+														urlNewTab: true,
+													},
+												})
+											}
+										>
+											On
+										</button>
+										<button
+											className={!state.preferences?.urlNewTab ? styles.active : ''}
+											onClick={() =>
+												dispatch({
+													type: 'SET_PREFERENCES',
+													payload: {
+														...state.preferences,
+														urlNewTab: false,
+													},
+												})
+											}
+										>
+											Off
+										</button>
 									</div>
 								</div>
 								<div className={styles.contentItem}>
-									<p>Export your data as JSOn</p>
+									<p>Export your data as JSON</p>
 									<div className={styles.themeBtn}>
-										<button className={theme === 'light' ? styles.active : ''}>
+										<button
+											className={theme === 'light' ? styles.active : ''}
+											onClick={() => {
+												browser.storage.local.get().then((data) => {
+													exportData(data)
+												})
+											}}
+										>
 											Export
 										</button>
+									</div>
+								</div>
+
+								<div className={styles.contentItem}>
+									<p>Import your JSON Data</p>
+									<div className={styles.themeBtn}>
+										<input
+											type='file'
+											accept='.json'
+											id='actual-btn'
+											hidden
+											onChange={handleImport}
+										/>
+										<label htmlFor='actual-btn' className={styles.importBtn}>
+											Import
+										</label>
 									</div>
 								</div>
 							</div>

@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect, useContext } from 'react'
 import Tippy from '@tippyjs/react'
-import 'tippy.js/dist/tippy.css'
 import { Shortcut } from '../../reducers/types'
 import styles from './styles.module.scss'
 import { ContextProvider } from '../../context/context'
@@ -18,11 +17,20 @@ const ShortcutCard: React.FC<IShortcutCardProps> = ({
 	const [isCardMenuVisible, setIsCardMenuVisible] = useState(false)
 	const [isEditShortcutVisible, setIsEditShortcutVisible] = useState(false)
 	const { state, dispatch } = useContext(ContextProvider)
+	const [isNewTabLink, setIsNewTabLink] = useState('_self')
 	const domain = shortcut.url
 		.slice(shortcut.url.indexOf('//') + 2, shortcut.url.indexOf('.com') + 16)
 		.slice(0, 18)
 
 	const shortcutMenuRef = useRef() as React.MutableRefObject<HTMLInputElement>
+
+	useEffect(() => {
+		if (state.preferences?.urlNewTab) {
+			setIsNewTabLink('_blank')
+		} else {
+			setIsNewTabLink('_self')
+		}
+	}, [state.preferences.urlNewTab])
 	useEffect(() => {
 		document.addEventListener('mousedown', (e) => {
 			if (!shortcutMenuRef.current?.contains(e.target as Node)) {
@@ -143,7 +151,9 @@ const ShortcutCard: React.FC<IShortcutCardProps> = ({
 						placement='right-end'
 						arrow={false}
 					>
-						<a href={shortcut.url}>{domain}..</a>
+						<a href={shortcut.url} target={isNewTabLink}>
+							{domain}..
+						</a>
 					</Tippy>
 				</div>
 			</div>

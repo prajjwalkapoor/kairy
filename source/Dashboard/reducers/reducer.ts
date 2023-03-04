@@ -7,6 +7,11 @@ export const initialState = {
 	shortcutCategoryList: [],
 	spaceCategoryList: [],
 	mapper: [],
+	preferences: {
+		searchSource: 'Shortcuts',
+		theme: 'light',
+		urlNewTab: false,
+	},
 }
 export const reducer = (state: IState, action: IAction) => {
 	switch (action.type) {
@@ -48,6 +53,11 @@ export const reducer = (state: IState, action: IAction) => {
 			return {
 				...state,
 				mapper: action.payload,
+			}
+		case 'SET_PREFERENCES':
+			return {
+				...state,
+				preferences: action.payload,
 			}
 		default:
 			return state

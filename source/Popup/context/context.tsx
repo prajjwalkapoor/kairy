@@ -13,6 +13,9 @@ const ContextProvide = ({ children }: ContextProps): JSX.Element => {
 		if (theme) {
 			const root = document.querySelector(':root')!
 			root.setAttribute('theme', theme)
+		} else {
+			const root = document.querySelector(':root')!
+			root.setAttribute('theme', 'light')
 		}
 	}
 	const [state, dispatch] = useReducer(reducer, initialState)

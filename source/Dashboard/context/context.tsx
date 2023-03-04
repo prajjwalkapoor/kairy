@@ -41,13 +41,27 @@ const ContextProvide = ({ children }: ContextProps): JSX.Element => {
 						payload: res.spaceCategoryList,
 				  })
 				: dispatch({ type: 'SET_SPACE_CATEGORY_LIST', payload: [] })
+
+			res.preferences &&
+				dispatch({
+					type: 'SET_PREFERENCES',
+					payload: res.preferences,
+				})
 		})
 	}, [])
 
 	useEffect(() => {
 		browser.storage.local.set({ shortcutList: state.shortcutList })
 	}, [state.shortcutList])
+
+	useEffect(() => {
+		browser.storage.local.set({
+			preferences: state.preferences,
+		})
+	}, [state.preferences])
+
 	console.log(state, 'state')
+
 	// console.log(state.shortcutList, 'state.shortcutList')
 
 	return (

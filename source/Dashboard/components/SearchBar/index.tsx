@@ -3,9 +3,7 @@ import { ContextProvider } from '../../context/context'
 import styles from './styles.module.scss'
 
 const SearchBar: React.FC = () => {
-	const [searchSource, setSearchSource] = useState(
-		localStorage.getItem('searchSource') || 'Shortcuts'
-	)
+	const [searchSource, setSearchSource] = useState('Shortcuts')
 	const [searchQuery, setSearchQuery] = useState('')
 	const [isSourceDropdownVisible, setIsSourceDropdownVisible] = useState(false)
 	const [isSearchDropdownVisible, setIsSearchDropdownVisible] = useState(false)
@@ -42,7 +40,9 @@ const SearchBar: React.FC = () => {
 			})
 		}
 	}, [])
-
+	useEffect(() => {
+		setSearchSource(state.preferences.searchSource)
+	}, [state.preferences.searchSource])
 	useEffect(() => {
 		if (searchSource == 'Shortcuts') {
 			searchShortcutHandler()
@@ -163,7 +163,13 @@ const SearchBar: React.FC = () => {
 								key={source}
 								onClick={() => {
 									setSearchSource(() => {
-										localStorage.setItem('searchSource', source)
+										dispatch({
+											type: 'SET_PREFERENCES',
+											payload: {
+												...state.preferences,
+												searchSource: source,
+											},
+										})
 										return source
 									})
 									setIsSourceDropdownVisible(false)

@@ -22,6 +22,11 @@ export interface IState {
 	spaceList: Space[]
 	spaceCategoryList: string[]
 	mapper: Shortcut[]
+	preferences: {
+		searchSource: string
+		theme: string
+		urlNewTab: Boolean
+	}
 }
 export interface IAction {
 	type:
@@ -31,5 +36,6 @@ export interface IAction {
 		| 'SET_SHORTCUT_CATEGORY_LIST'
 		| 'SET_SPACE_CATEGORY_LIST'
 		| 'SET_MAPPER'
+		| 'SET_PREFERENCES'
 	payload: any
 }
