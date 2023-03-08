@@ -39,13 +39,14 @@ const Settings: React.FC<ISettingsProps> = ({ onClose }) => {
 			const jsonData = JSON.parse(e.target?.result as string)
 			Object.keys(jsonData).forEach((key) => {
 				if (key === 'preferences') {
-					browser.storage.sync.set({ preferences: jsonData[key] })
+					browser.storage.local.set({ preferences: jsonData[key] })
 					dispatch({ type: 'SET_PREFERENCES', payload: jsonData[key] })
+					browser.storage.local.set({ preferences: jsonData[key] })
 				} else if (key === 'shortcutList') {
-					browser.storage.sync.set({ shortcutList: jsonData[key] })
+					browser.storage.local.set({ shortcutList: jsonData[key] })
 					dispatch({ type: 'SET_SHORTCUT_LIST', payload: jsonData[key] })
 				} else if (key === 'shortcutCategoryList') {
-					browser.storage.sync.set({ shortcutCategoryList: jsonData[key] })
+					browser.storage.local.set({ shortcutCategoryList: jsonData[key] })
 					dispatch({ type: 'SET_SHORTCUT_CATEGORY_LIST', payload: jsonData[key] })
 				}
 			})
@@ -116,7 +117,7 @@ const Settings: React.FC<ISettingsProps> = ({ onClose }) => {
 									<div className={styles.themeBtn}>
 										<button
 											className={state.preferences?.urlNewTab ? styles.active : ''}
-											onClick={() =>
+											onClick={() => {
 												dispatch({
 													type: 'SET_PREFERENCES',
 													payload: {
@@ -124,13 +125,19 @@ const Settings: React.FC<ISettingsProps> = ({ onClose }) => {
 														urlNewTab: true,
 													},
 												})
-											}
+												browser.storage.local.set({
+													preferences: {
+														...state.preferences,
+														urlNewTab: true,
+													},
+												})
+											}}
 										>
 											On
 										</button>
 										<button
 											className={!state.preferences?.urlNewTab ? styles.active : ''}
-											onClick={() =>
+											onClick={() => {
 												dispatch({
 													type: 'SET_PREFERENCES',
 													payload: {
@@ -138,7 +145,13 @@ const Settings: React.FC<ISettingsProps> = ({ onClose }) => {
 														urlNewTab: false,
 													},
 												})
-											}
+												browser.storage.local.set({
+													preferences: {
+														...state.preferences,
+														urlNewTab: false,
+													},
+												})
+											}}
 										>
 											Off
 										</button>

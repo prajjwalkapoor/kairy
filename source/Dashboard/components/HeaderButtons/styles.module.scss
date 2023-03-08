@@ -5,9 +5,7 @@
 .container {
 	display: flex;
 	justify-content: end;
-	&:last-child {
-		margin-right: 0;
-	}
+
 	button {
 		width: 2rem;
 		height: 2rem;
@@ -16,7 +14,6 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		margin: 0 0.5rem;
 		&:hover {
 			cursor: pointer;
 		}

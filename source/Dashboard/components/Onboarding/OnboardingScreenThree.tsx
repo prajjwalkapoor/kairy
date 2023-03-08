@@ -32,6 +32,9 @@ export const OnboardingScreenThree: React.FC<IOnboardingScreenProps> = ({
 			payload: shortcut_category_list,
 		})
 		browser.storage.local.set({
+			shortcutList: shortcut_list,
+		})
+		browser.storage.local.set({
 			shortcutCategoryList: shortcut_category_list,
 		})
 

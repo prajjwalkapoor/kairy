@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
+import { browser } from 'webextension-polyfill-ts'
 import { ContextProvider } from '../../context/context'
 import styles from './styles.module.scss'
 
@@ -166,6 +167,12 @@ const SearchBar: React.FC = () => {
 										dispatch({
 											type: 'SET_PREFERENCES',
 											payload: {
+												...state.preferences,
+												searchSource: source,
+											},
+										})
+										browser.storage.local.set({
+											preferences: {
 												...state.preferences,
 												searchSource: source,
 											},

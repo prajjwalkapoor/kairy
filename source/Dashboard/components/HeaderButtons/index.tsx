@@ -24,7 +24,7 @@ const HeaderButtons = () => {
 						</svg>
 					</button>
 				</Tippy>
-				<Tippy
+				{/* <Tippy
 					content={<span className={styles.tooltip}>Descover</span>}
 					placement='left-end'
 					arrow={false}
@@ -40,7 +40,7 @@ const HeaderButtons = () => {
 							<path d='M12.1426 0.428711H1.85686C0.914007 0.428711 0.142578 1.20014 0.142578 2.143V15.8573C0.142578 16.8001 0.914007 17.5716 1.85686 17.5716H12.1426C13.0854 17.5716 13.8569 16.8001 13.8569 15.8573V2.143C13.8569 1.20014 13.0854 0.428711 12.1426 0.428711ZM1.85686 2.143H6.14258V9.00014L3.99972 7.71442L1.85686 9.00014V2.143Z' />
 						</svg>
 					</button>
-				</Tippy>
+				</Tippy> */}
 			</div>
 			{isSettingOpen && <Settings onClose={setIsSettingOpen} />}
 		</>

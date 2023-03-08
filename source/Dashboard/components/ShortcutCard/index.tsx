@@ -43,8 +43,9 @@ const ShortcutCard: React.FC<IShortcutCardProps> = ({
 		let filteredShortcutList = state.shortcutList.filter((item) => {
 			return item.id !== shortcut.id
 		})
-		browser.storage.sync.set({ shortcutList: filteredShortcutList })
+		browser.storage.local.set({ shortcutList: filteredShortcutList })
 		dispatch({ type: 'SET_SHORTCUT_LIST', payload: filteredShortcutList })
+		browser.storage.local.set({ shortcutList: filteredShortcutList })
 		setIsCardMenuVisible(false)
 	}
 
@@ -56,6 +57,7 @@ const ShortcutCard: React.FC<IShortcutCardProps> = ({
 			return item
 		})
 		dispatch({ type: 'SET_SHORTCUT_LIST', payload: pinnedArr })
+		browser.storage.local.set({ shortcutList: pinnedArr })
 		setIsCardMenuVisible(false)
 	}
 
@@ -67,6 +69,7 @@ const ShortcutCard: React.FC<IShortcutCardProps> = ({
 			return item
 		})
 		dispatch({ type: 'SET_SHORTCUT_LIST', payload: unpinnedArr })
+		browser.storage.local.set({ shortcutList: unpinnedArr })
 		setIsCardMenuVisible(false)
 	}
 

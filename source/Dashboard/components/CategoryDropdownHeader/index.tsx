@@ -5,28 +5,19 @@ import { ContextProvider } from '../../context/context'
 import AddCustomShortcut from '../AddCustomShortcut'
 import { Shortcut } from '../../reducers/types'
 import Tippy from '@tippyjs/react'
+import { ManageCategories } from '../ManageCategories'
 
 const CategoryDropdownHeader: React.FC = () => {
-	const [categories, setCategories] = useState<string[]>([])
 	const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false)
 	const [isAddShortcutVisible, setIsAddShortcutVisible] = useState(false)
 	const [isSortDropdownVisible, setIsSortDropdownVisible] = useState(false)
+	const [isManageCategoryVisible, setIsManageCategoryVisible] = useState(false)
 	const { state, dispatch } = useContext(ContextProvider)
 	const categoryDropdownRef =
 		useRef() as React.MutableRefObject<HTMLInputElement>
 
 	const sortDropdownRef = useRef() as React.MutableRefObject<HTMLInputElement>
 	useEffect(() => {
-		browser.storage.local.get().then((res) => {
-			if (res.activeShortcutCategory) {
-				dispatch({
-					type: 'SET_ACTIVE_SHORTCUT_CATEGORY',
-					payload: res.activeShortcutCategory,
-				})
-			}
-			res.shortcutCategoryList && setCategories(res.shortcutCategoryList)
-		})
-
 		document.addEventListener('mousedown', (event) => {
 			if (!categoryDropdownRef.current?.contains(event.target as Node)) {
 				setIsCategoryDropdownOpen(false)
@@ -82,13 +73,18 @@ const CategoryDropdownHeader: React.FC = () => {
 			payload: sortedArr,
 		})
 	}
-
-	console.log(isAddShortcutVisible)
 	return (
 		<>
 			{isAddShortcutVisible && (
 				<>
 					<AddCustomShortcut setIsAddShortcutVisible={setIsAddShortcutVisible} />
+				</>
+			)}
+			{isManageCategoryVisible && (
+				<>
+					<ManageCategories
+						setIsManageCategoryVisible={setIsManageCategoryVisible}
+					/>
 				</>
 			)}
 			<div className={styles.container}>
@@ -143,7 +139,7 @@ const CategoryDropdownHeader: React.FC = () => {
 						>
 							All Categories
 						</p>
-						{categories.map((item) => {
+						{state.shortcutCategoryList.map((item) => {
 							item == 'all' && (item = 'All Categories')
 							return (
 								<p
@@ -155,6 +151,9 @@ const CategoryDropdownHeader: React.FC = () => {
 											type: 'SET_ACTIVE_SHORTCUT_CATEGORY',
 											payload: item,
 										})
+										browser.storage.local.set({
+											activeShortcutCategory: item,
+										})
 										setIsCategoryDropdownOpen(false)
 									}}
 								>
@@ -165,9 +164,8 @@ const CategoryDropdownHeader: React.FC = () => {
 						<p
 							className={styles.manageCategory}
 							onClick={() => {
-								// manageCategoryElement.classList.toggle('visible')
-								// manageCategoryElementBg.classList.toggle('visible')
-								// setIsCategoryDropdownOpen(false)
+								setIsManageCategoryVisible(true)
+								setIsCategoryDropdownOpen(false)
 							}}
 						>
 							Manage Category

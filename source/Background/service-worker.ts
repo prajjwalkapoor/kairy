@@ -3,11 +3,8 @@ import { browser } from 'webextension-polyfill-ts'
 import { getDomainName } from '../utils/getDomain'
 import { getIcon } from '../utils/geticon'
 
-// create context menu
-
 const createSubmenu = async () => {
 	const categoryList = await browser.storage.local.get('shortcutCategoryList')
-
 	await categoryList.shortcutCategoryList.forEach((category: string) => {
 		browser.contextMenus.create({
 			id: category,
@@ -23,8 +20,11 @@ browser.contextMenus.create({
 	title: 'Save to Kairy',
 	contexts: ['link'],
 })
-
-createSubmenu()
+browser.storage.onChanged.addListener((changes, areaName) => {
+	if (areaName === 'local' && changes.shortcutCategoryList) {
+		createSubmenu()
+	}
+})
 
 // listen for context menu click
 browser.contextMenus.onClicked.addListener((info: any, tab) => {

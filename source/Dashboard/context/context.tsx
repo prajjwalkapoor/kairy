@@ -53,6 +53,11 @@ const ContextProvide = ({ children }: ContextProps): JSX.Element => {
 	useEffect(() => {
 		browser.storage.local.set({ shortcutList: state.shortcutList })
 	}, [state.shortcutList])
+	useEffect(() => {
+		browser.storage.local.set({
+			shortcutCategoryList: state.shortcutCategoryList,
+		})
+	}, [state.shortcutCategoryList])
 
 	useEffect(() => {
 		browser.storage.local.set({

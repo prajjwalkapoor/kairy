@@ -6,6 +6,7 @@ import { Shortcut } from '../../reducers/types'
 import ShortcutCard from '../ShortcutCard'
 import styles from './styles.module.scss'
 import { motion } from 'framer-motion'
+import { browser } from 'webextension-polyfill-ts'
 
 const variants = {
 	enter: {
@@ -41,14 +42,18 @@ const AddCustomShortcut: React.FC<IAddCustomShortcutProps> = ({
 	const [category, setCategory] = useState('all')
 	const [id, setId] = useState(nanoid())
 	const [icon, setIcon] = useState('')
+	const [isPinned, setIsPinned] = useState(false)
 	const mainRef = useRef() as React.MutableRefObject<HTMLInputElement>
 	useEffect(() => {
+		console.log('shortcutData', shortcutData)
+
 		if (shortcutData) {
 			setTitle(shortcutData.title)
 			setUrl(shortcutData.url)
 			setCategory(shortcutData.category)
 			setId(shortcutData.id)
 			setIcon(shortcutData.icon)
+			setIsPinned(shortcutData.isPinned)
 		}
 
 		function handleClickOutside(event: any) {
@@ -75,7 +80,7 @@ const AddCustomShortcut: React.FC<IAddCustomShortcutProps> = ({
 				category: category,
 				icon: icon || `https://www.google.com/s2/favicons?domain=${url}`,
 				modifiedOn: new Date().getTime().toString(),
-				isPinned: false,
+				isPinned: isPinned,
 			}
 			if (shortcutData) {
 				const newShortcutList = state.shortcutList.map((shortcut) => {
@@ -88,13 +93,16 @@ const AddCustomShortcut: React.FC<IAddCustomShortcutProps> = ({
 					type: 'SET_SHORTCUT_LIST',
 					payload: newShortcutList,
 				})
+				browser.storage.local.set({ shortcutList: newShortcutList })
 			} else {
 				dispatch({
 					type: 'SET_SHORTCUT_LIST',
 					payload: [...state.shortcutList, updatedShortcut],
 				})
+				browser.storage.local.set({
+					shortcutList: [...state.shortcutList, updatedShortcut],
+				})
 			}
-			console.log('saved')
 			setIsAddShortcutVisible(false)
 		}
 	}

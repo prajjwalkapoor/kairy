@@ -3,7 +3,7 @@
 @import '../../../styles/variables';
 
 .container {
-	width: 73%;
+	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -105,6 +105,7 @@
 		justify-content: flex-end;
 		align-items: center;
 		button {
+			margin-inline: 0.5rem;
 			&:hover {
 				cursor: pointer;
 			}
@@ -114,7 +115,6 @@
 
 			.cardMenuDropdown {
 				z-index: 1;
-				background-color: white;
 				position: absolute;
 				width: 8rem;
 				top: 2.4rem;
