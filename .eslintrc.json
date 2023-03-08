@@ -1,41 +1,32 @@
 {
-	"extends": [
-		"@abhijithvijayan/eslint-config/typescript",
-		"@abhijithvijayan/eslint-config/node",
-		"@abhijithvijayan/eslint-config/react"
-	],
-	"parserOptions": {
-		"project": ["./tsconfig.json"],
-		"sourceType": "module"
-	},
-	"rules": {
-		"no-console": "off",
-		"no-extend-native": "off",
-		"react/jsx-props-no-spreading": "off",
-		"jsx-a11y/label-has-associated-control": "off",
-		"@typescript-eslint/no-non-null-assertion": "off",
-		"class-methods-use-this": "off",
-		"max-classes-per-file": "off",
-		"node/no-missing-import": "off",
-		"node/no-unpublished-import": "off",
-		"jsx-a11y/click-events-have-key-events": "off",
-		"jsx-a11y/no-noninteractive-element-to-interactive-role": "off",
-		"node/no-unsupported-features/es-syntax": [
-			"error",
-			{
-				"ignores": ["modules"]
-			}
-		],
-		"no-undef": "off",
-		"@typescript-eslint/no-explicit-any": "off",
-		"react/no-array-index-key": "off"
-	},
-	"env": {
-		"webextensions": true
-	},
-	"settings": {
-		"node": {
-			"tryExtensions": [".tsx"] // append tsx to the list as well
-		}
-	}
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "overrides": [
+        {
+            "files": ["*.ts", "*.tsx"],
+            "rules": {
+                "@typescript-eslint/explicit-module-boundary-types": "off",
+                "react/no-unescaped-entities": "off"
+            }
+        }
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": ["./tsconfig.json"],
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint"
+    ],
+    "rules": {
+    }
 }

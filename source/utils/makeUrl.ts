@@ -1,7 +1,6 @@
 export const makeUrl = (url: string): string => {
-	if (url.startsWith('http://') || url.startsWith('https://')) {
-		return url
-	} else {
-		return `https://${url}`
-	}
-}
+  if (url.startsWith('http://') || url.startsWith('https://')) {
+    return url;
+  }
+  return `https://${url}`;
+};
