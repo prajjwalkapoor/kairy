@@ -2,6 +2,8 @@
 
 _Kairy is intended to simplify your online experience by organizing everything in one location, allowing you to be more productive._
 
+[![Download Extension](https://custom-icon-badges.herokuapp.com/badge/-Download-blue?style=for-the-badge&logo=download&logoColor=white "Download zip")](https://chrome.google.com/webstore/detail/kairy/hhokdeppnlkpppnkgaffbnnmmjidjlld)
+
 ### The Bookmarking Tool that Does it All
 
 - Save Anything from the Web
